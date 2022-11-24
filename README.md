@@ -176,6 +176,7 @@ Una vez pasados unos minutos podremos darle a `Operator` el cual nos pedirá el 
 
 ![Graph](./img/operator.png) 
 
+---
 ### Bridge entre Nodo Chainlink y External Adapter
 
 Ahora iremos a la sección de `Bridges` y le daremos a `New Bridge`. Añadiremos el nombre que queramos y en `Bridge URL*` pondremos la dirección que nos aportó Digital Ocean (https://seashell-app-29fx9.ondigitalocean.app/), el resto lo dejamos igual.
@@ -183,11 +184,14 @@ Ahora iremos a la sección de `Bridges` y le daremos a `New Bridge`. Añadiremos
 ![Graph](./img/bridge.png) 
 ![Graph](./img/bridge1.png) 
 
+---
 ### Jobs 
 
 Ahora que se ha creado el bridge, iremos a la sección `Jobs` y `new jobs` y pegaremos el archivo ya generado [climateq-ea.example.toml](/job-spec/climateq-ea.example.toml) pero este archivo debe de ser modificado con la direción de [Oracle.sol](https://docs.chain.link/chainlink-nodes/fulfilling-requests), aquí encontraremos el Smart que deployaremos en Remix y nos servirá para ajustar el `Jobs`
 
-imagen
+![Graph](./img/oracle.png) 
+
+---
 
 #### Remix Oracle.sol
 
