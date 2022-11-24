@@ -195,45 +195,55 @@ Ahora que se ha creado el bridge, iremos a la sección `Jobs` y `new jobs` y peg
 
 #### Remix Oracle.sol
 
-El enlace le llevara directamente a Remix con [Oracle.sol](https://docs.chain.link/chainlink-nodes/fulfilling-requests), debera de ajustar la versión de compile a `0.6.6`
+El enlace le llevará directamente a Remix con [Oracle.sol](https://docs.chain.link/chainlink-nodes/fulfilling-requests), para ello valla hasta `open Oracle.sol Smart Contract`, deberá de ajustar la versión de compile a `0.6.6`
 
-imagen
+![Graph](./img/compileoracle.png) 
 
 Ahora procederemos a conectar nuestro `ENVIRONMENT` en `Injected Metamask` y haremos el deploy en el que debemos añadir la dirección de Smart de [LINK TOKEN](https://docs.chain.link/resources/link-token-contracts/) de la red escogida. 
 
+* Puede conseguir [Faucet GoETH](https://goerlifaucet.com/)
+* Puede conseguir [Faucet GoETH](https://goerli-faucet.mudit.blog/)
 * Puede conseguir [Faucet Matic](https://faucet.polygon.technology/)
-* Puede conseguir [Faucet Link](https://faucets.chain.link/mumbai)
+* Puede conseguir [Faucet Link](https://faucets.chain.link/)
 
-Copiaremos la dirección de Link Token de Testnet Munmbai y la pegaremos en Remix para el Deploy
+Copiaremos la dirección de Link Token de Testnet Goerli y la pegaremos en Remix para el Deploy
 
-imagen
+![Graph](./img/linkgo.png) 
+![Graph](./img/deploy.png)
 
-* [HASH](https://mumbai.polygonscan.com/tx/0xb2087c91f48d1a66578609d2027f7864faa80c6ae1057098319481e6cb973575)
+* [HASH](https://goerli.etherscan.io/tx/0xab0648169335123db3a6a234fd51449a662ac7b668428da82a49f8171e1104ee)
 
-Ahora podremos actuar desde Remix o PolygonScan, en este caso con [Oracle](https://mumbai.polygonscan.com/address/0x653b209dbd78b48e1df946e138352dc81e0ec45d#writeContract) que hemos creado. Primero necesiteremos algunos datos de [NaasLink](https://naas.link/) en apartado `Operator` después de volver a poner credenciales iremos a `ajustes` y `Key Management` que nos proporcionara varias claves. Nos hara la falta `Account Addresses`
+NOTA: Este contrato estará verificado en Etherscan, por lo que podrá actuar directamente desde el explorador.
 
-image
+Ahora podremos actuar desde Remix o Goerli Etherscan, en este caso con [Oracle](https://goerli.etherscan.io/address/0x3cad6eec66c02dd6042af12076c67a9916034d63#writeContract) que hemos creado. 
 
-image
+Primero necesiteremos algunos datos de [ChainLink Operator](https://naas.link/),en nuestro nodo en `Manage node` entraremos y luego en el apartado `Operator` Nos volverá a pedir credenciales e iremos a `ajustes` y `Key Management` que nos proporcionara varias claves. Nos hara la falta `Account Addresses`
 
-Ahora iremos a [Explorador y Oracle](https://mumbai.polygonscan.com/address/0x653b209dbd78b48e1df946e138352dc81e0ec45d#writeContract#F5) en la opción  `setfullimentPermission` pegaremos nuestra `Account Addresses` y `true`.
+![Graph](./img/key.png)
 
-image
+![Graph](./img/keyacco.png)
 
-* [Hash](https://mumbai.polygonscan.com/tx/0xbe9b7539d8d055a2752e8b2957d26aac6e3c3322ec97d6d361ac279ea03441da)
 
-Por ahora dejaremos el `Account Addresses` sin saldo de `Matic`, pero para que funcione al final de los ajustes deberemos cargarlo para que confirme las llamadas, pero antes volvamos a `Jobs`
+Ahora iremos a [Explorador y Oracle](https://goerli.etherscan.io/address/0x3cad6eec66c02dd6042af12076c67a9916034d63#writeContract#F5) en la opción  `setfullimentPermission` pegaremos nuestra `Account Addresses` y `true`.
+
+![Graph](./img/set.png)
+
+* [Hash](https://goerli.etherscan.io/tx/0x25a91d71bfc45560b991bfacdd7b058c772afcbdac84568a46642e0b38df058c)
+
+Por ahora dejaremos el `Account Addresses` sin saldo de `GoEth` ni `Link`, pero para que funcione al final de los ajustes deberemos cargarlo para que confirme las llamadas, pero antes volvamos a `Jobs`
+
+---
 
 ## Ajustes Jobs
 
-Ahora copiaremos la dirección del conrato que ha deployado en nuestro caso [NadaiOracle](https://mumbai.polygonscan.com/tx/0x653b209Dbd78B48e1df946E138352dc81e0eC45d) y lo añadiremos en el [climateq-ea.example.toml](/job-spec/climateq-ea.example.toml), sustituyendo `ORACLE_CONTRACT_ADDRESS` y el `BRIDGE_NAME` por el que haya escogido, nosotros `Nadai`, esto siempre desde [NaasLink](https://naas.link/)
+Ahora copiaremos la dirección del conrato que ha deployado en nuestro caso [NadaiOracle](https://goerli.etherscan.io/address/0x3cad6eec66c02dd6042af12076c67a9916034d63) y lo añadiremos en el [climateq-ea.example.toml](/job-spec/climateq-ea.example.toml), sustituyendo `ORACLE_CONTRACT_ADDRESS` y el `BRIDGE_NAME` por el que haya escogido, nosotros `Nadai`, esto siempre desde [NaasLink](https://naas.link/), aunque puede hacer los ajustes desde su editor de codigo en el archivo.
 
-imagen
-imagen
+![Graph](./img/job.png)
+![Graph](./img/job1.png)
 
 Esto nos dará si todo ha ido bien una ID y el `External Job ID` que nos hará falta para el siguiente contrato [Co2Consumer.sol](/contracts/Co2Consumer.sol).
 
-imagen
+![Graph](./img/externalid.png)
 
 ## Remix Co2Consumer.sol
 
@@ -242,52 +252,45 @@ Ahora pasaremos a copiar [Co2Consumer.sol](contracts/Co2Consumer.sol) y hacer el
 Primero haremos el `compile`, fijarse dejar la versión en la adecuada, en este caso `0.8.7`.
 Tambien deberemos sustituir en el contrato los siguientes valores antes del `deploy`
 
-* [Dirección de Contrato token Link](https://mumbai.polygonscan.com/address/0x326c977e6efc84e512bb9c30f76e30c160ed06fb)
-* [Contract Address de Oracle](https://mumbai.polygonscan.com/address/0x653b209dbd78b48e1df946e138352dc81e0ec45d#writeContract)
+![Graph](./img/compileco2.png)
+
+* [Dirección de Contrato token Link Goerli](https://goerli.etherscan.io/token/0x326C977E6efc84E512bB9C30f76E30c160eD06FB)
+* [Contract Address de Oracle](https://goerli.etherscan.io/address/0x3cad6eec66c02dd6042af12076c67a9916034d63)
 imagen
 * [External Key del Job ID sin guiones Operator](https://cdrl6mbafsvkuk9gp1ug.eu-west1.naas.linkpool.io/signin)
 
 
-imagen
+![Graph](./img/co2.png)
 
-* [HASH](https://mumbai.polygonscan.com/tx/0xb33a86a81ccbd1a3c882d97a61fb1d90035f5a744978e9a4fa99bc0eff392ecd)
+* [HASH](https://goerli.etherscan.io/tx/0xeb2c0dade4468c2070822c31f395f593571d3fe0b02fe539c3051b5790c3ff7a)
 
-Ahora le pasaremos Link a este Smart para que pueda ejecutarse y usaremos REMIX para escribir directamente, ya que verificar el contrato lleva mas trabajo. Iremos a `requestCO2emission` y añadiremos los datos iniciales, revise foto.
+Ahora le ENVIAREMOS Link a este Smart deployado para que pueda ejecutarse. Luego usaremos REMIX para escribir directamente, ya que verificar el contrato lleva mas trabajo. Iremos a `requestCO2emission` y añadiremos los datos iniciales, revise foto.
 
-imagen
+![Graph](./img/call.png)
 
-* [HASH](https://mumbai.polygonscan.com/tx/0x041dd4f31e65ef55e45919b6a9616c2c76b10604d90eeff316d9782b984e8a60)
-
-
+* [HASH](https://goerli.etherscan.io/tx/0x8380edafabd24489388d2e502235133fca162872874510c3cae2c39f9b063188)
 
 
+## Verificar que está Run
+
+Ahora si todo ha ido bien deberiamos de recibir una solitud en nuestro `Operator` [NaasLink](https://naas.link/) y como se estaría ejcutando
+
+![Graph](./img/run.png)
+
+También veremos ahora dentro de las `Transactions` que se ha ejecutado una, pero si entramos comprobariamos que esta en estado `pendiente`. Esto es debido ha que la `Account Addresses` debe de recibir fondos para poder `confirmar` las transacción. Asi que procedemos a enviarle `0.01 ETH` para poder confirmar la tx.
+
+![Graph](./img/tx.png)
+
+![Graph](./img/pending.png)
 
 
+Una vez llegados los fondos veremos como cambia el estado de la transacción y como se verificaria todo en nuestro contrato de Consumidor dentro de la Blockchain.
 
+![Graph](./img/balance.png)
 
+![Graph](./img/confirmado.png)
 
+---
+## Conclusión
 
-## Llamar al external adapter/API Server
-
-Localhost
-
-```bash
-curl -X POST -H "content-type:application/json" "http://localhost:8080" --data '{"id": 1, "data": {"from": "ONT", "to": "SCL","passengers": 300,"class": "unknown" } }'
-```
-## Llamar al external adapter/API Server
-
-URL Pública
-
-[API_Endpoint] = https://orca-app-wt4ks.ondigitalocean.app/
-
-```bash
-curl -X POST -H "content-type:application/json" "API_ENDPOINT" --data '{"id": 1, "data": {"from": "ONT", "to": "SCL","passengers": 300,"classFlight": "unknown" } }'
-```
-
-```bash
-curl -X POST -H "content-type:application/json" "https://orca-app-wt4ks.ondigitalocean.app/" --data '{"id": 1, "data": {"from": "ONT", "to": "SCL","passengers": 300,"classFlight": "unknown" } }'
-```
-
-
-
-
+Antes que nada agredecer el esfuerzo a Chainlink y su comunidad por hacer estos Workshop tan importantes y bien explicados. En este caso hemos aprendido a crear un External Adapter desde el nodo de Chainlink para ofrecer unos datos desde fuera de la cadena hacia dentro de la cadena. Aprendimos ajustar nuestras API, API_KEy...Para que nuestros contratos de Consumidor creados, inmutables, auditables puedan hacer esa llamada siempre solitando el External Adapter, no quedando expuesto la  información sensible de la API.
