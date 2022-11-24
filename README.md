@@ -31,6 +31,7 @@ Aquí estarán todos los enlaces oficiales, herramientas y documentos usados par
 * [Climatiq Doc](https://www.climatiq.io/docs)
 * [Sección de Vuelos](https://www.climatiq.io/docs#travel-flights) Además del cálculo directo de las emisiones por pasajero-kilómetro, pasajero-milla, tonelada-kilómetro o tonelada-milla, Climatiq pone a disposición puntos finales para calcular las emisiones en función de los aeropuertos de salida y llegada. La API seleccionará automáticamente un factor de emisión, actualmente basado en la elección del valor de CO2e más alto disponible.
 
+---
 
 ## Crear su propio adaptador a partir de esta plantilla
 
@@ -89,9 +90,9 @@ El `API_POINT` Calcula las emisiones totales estimadas producidas por los vuelos
 ![Graph](./img/travel.png)
 
 
-Quedando el archivo `.env.example` de la siguiente forma
+Quedando el archivo [.env.example](/.env.example) de la siguiente forma
 
-![Graph](./img/travel.png) 
+![Graph](./img/example.png) 
 
 ---
 
@@ -101,30 +102,33 @@ DigitalOcean tiene los servicios de computación en la nube que necesita, con pr
 
 Aqui deberemos de `Verificar su identidad` y de pagar `5 USD` con un método de verificación centralizada, en este caso usamos `Paypal`. Una vez verficado y realizados estos pasos podremos seguir, desbloqueando el menu principal.
 
-![Graph](./img/travel.png) 
+![Graph](./img/digital.png) 
 
 En digital iremos a `Create` y escogeremos `Apps`. Dentro podremos configurar con un par de click, que repo escoger sin tener que definir mas valores manuales, para ello ajustaremos `Manage account` y daremos permisos desde `Github`.
 
-imagen
+![Graph](./img/git.png) 
 
 **NOTA: Para ver el repositorio actual, cargue previamente su contenido mediante un Fork o Manual de este repositorio**
 
+
 Ahora iremos a recursos y ajustaremos al `Plan Básico` de `5usd` y el resto lo dejaremos igual, revisar foto
 
-imagen
+![Graph](./img/basico.png) 
+
 
 Ahora iremos a los ajustes de las variables del entorno y le daremos a `Editar`, tendremos que tener los datos de `API_POINT` y `API_ENDPOINT`. Añadiremos dos `Keys` con estos valores y guardamos los ajustes, veremos como han sido añadidos ambos y le damos a siguiente. 
 
 Los siguientes dos pasos puede darle a continuar hasta que se cree su proyecto. Luego empezará su creación esto le llevará algún tiempo. Una vez termine dará un nombre aleatorio a su proyecto, en este caso `seashell-app`.
 
-imagen
+![Graph](./img/seas1.png)   ![Graph](./img/seas2.png) 
+![Graph](./img/app.png) 
 
 Ahora tendremos que darle al enlace de ir `https://seashell-app-29fx9.ondigitalocean.app/`
 
-imagen
+![Graph](./img/link.png)    ![Graph](./img/error.png) 
 
 No se preocupe por el error, solo nos hace falta `https://seashell-app-29fx9.ondigitalocean.app/`
-para modificar el primer código y sustituir el `API_ENDPOINT`
+para modificar el código que vamos a usar en la terminal y sustituir el `API_ENDPOINT`. Icialmente usariamos el primero y ya con el `API_ENDPOINT` el segundo.
 
 ```bash
 curl -X POST -H "content-type:application/json" "API_ENDPOINT" --data '{"id": 1, "data": {"from": "ONT", "to": "SCL","passengers": 300,"classFlight": "unknown" } }'
@@ -136,12 +140,16 @@ Quedando el definitivo en esta repo asi y la que ejecutaremos en la terminal que
 curl -X POST -H "content-type:application/json" "https://seashell-app-29fx9.ondigitalocean.app/" --data '{"id": 1, "data": {"from": "ONT", "to": "SCL","passengers": 300,"classFlight": "unknown" } }'
 ```
 
-imagen
+![Graph](./img/seas.png) 
 
 Puede revisar también en [Digital Ocean](https://www.digitalocean.com/) como su terminal le devuelve los mismo datos solicitados.
 
-imagen
+![Graph](./img/seasdigi.png) 
 
+
+NOTA: RECUERDE EN CASO DE DUDA [Workshop External Adapters 📹](https://www.youtube.com/watch?v=fs3Xg3fZ2Sg)
+
+---
 ## LinkPool & NaasLink
 
 Ahora nos centraremos en una de las partes mas importantes LinkPool. Son creadores de nodos en los que puede confiar, creando productos y servicios diseñados específicamente para proveedores de datos, desarrolladores, participantes y operadores.
