@@ -40,7 +40,7 @@ Primero clonaremos este repositorio y cambiar `ExternalAdapterProject` abajo al 
 git clone https://github.com/thodges-gh/CL-EA-NodeJS-Template.git ExternalAdapterProject
 ```
 
-![Graph](./img/template.jpg)
+![Graph](./img/template.png)
 
 Entra al nuevo directorio creado
 
@@ -62,7 +62,7 @@ Instalar dependencias:
 yarn
 ```
 
-![Graph](./img/yarn.jpg)
+![Graph](./img/yarn.png)
 
 ### Run
 
@@ -74,24 +74,24 @@ yarn start
 
 **NOTA: Una vez se ejecute el nodo, no cerrar TERMINAL, abrir una nueva para continuar pruebas**
 
-![Graph](./img/start.jpg)
+![Graph](./img/start.png)
 
 ---
 ## Climatiq
 
 Una vez registrado en [Climatiq](https://www.climatiq.io/) necesitaremos guardar en `.env.example` los `API_KEY` y `API_POINT`. Iremos a `API Keys` y crearemos una con el nombre que queramos, esta api la pegaremos en el archivo `.env.example`.
 
-![Graph](./img/apikeys.jpg)
+![Graph](./img/apikeys.png)
 
 
 El `API_POINT` Calcula las emisiones totales estimadas producidas por los vuelos de pasajeros entre los aeropuertos especificados. Lo obtendremos de los [documentos](https://www.climatiq.io/docs#travel-flightsx)
 
-![Graph](./img/travel.jpg)
+![Graph](./img/travel.png)
 
 
 Quedando el archivo `.env.example` de la siguiente forma
 
-![Graph](./img/travel.jpg)
+![Graph](./img/travel.png) 
 
 ---
 
@@ -101,7 +101,7 @@ DigitalOcean tiene los servicios de computación en la nube que necesita, con pr
 
 Aqui deberemos de `Verificar su identidad` y de pagar `5 USD` con un método de verificación centralizada, en este caso usamos `Paypal`. Una vez verficado y realizados estos pasos podremos seguir, desbloqueando el menu principal.
 
-imagen
+![Graph](./img/travel.png) 
 
 En digital iremos a `Create` y escogeremos `Apps`. Dentro podremos configurar con un par de click, que repo escoger sin tener que definir mas valores manuales, para ello ajustaremos `Manage account` y daremos permisos desde `Github`.
 
