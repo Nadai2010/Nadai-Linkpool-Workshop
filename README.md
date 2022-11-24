@@ -160,25 +160,28 @@ Ahora nos centraremos en una de las partes mas importantes LinkPool. Son creador
 
 Entraremos en [NaasLink](https://naas.link/) para crear soluciones y enviarlas más rápidas al abstraer las complejidades de la infraestructura con los nodos bajo demanda centrados en el desarrollador de LinkPool.
 
-Le daremos a conectar `web3`, debemos tener Metamask instalado y configurado en Munmbai para este Workshop. Al darle a conectar tenemos que estar en `RED ETH` sino dará error, una vez firmado el mesaje su cuenta habrá sido creada.
+Le daremos a conectar `web3`, debemos tener Metamask instalado y configurado en Munmbai o Goerli, para este Workshop. 
 
-imagen
-imagen
+Al darle a conectar tenemos que estar en `RED ETH` sino dará error, una vez firmado el mesaje su cuenta habrá sido creada.
 
-Luego iremos `Your Deployoments` y nos saldrá todos los nodos o external adaptadores disponibles, asi como toda la información de cada uno de ellos como proveedor de datos. En nuestro caso iremos a `Nodos` para deployar el nodo `Chainlink Polygon Testnet` en ella nos dará datos importantes a guardar.
+![Graph](./img/firma.png) 
+![Graph](./img/cuenta.png) 
+
+Luego iremos `Your Deployoments` y nos saldrá todos los nodos o external adaptadores disponibles, asi como toda la información de cada uno de ellos como proveedor de datos. En nuestro caso iremos a `Nodos` para deployar el nodo `Chainlink Goerli Testnet`, para hacerlo en una red disitnta al tutorial oficial, asi abarcamos más contenido, en ella nos dará datos IMPORTANTES a guardar.
 
 * Password y dirección del Dominio
 * Password y dirección del Nodo 
 
 Una vez pasados unos minutos podremos darle a `Operator` el cual nos pedirá el `Domain login` y `Password` y posterior los del `Nodo`. Si todo ha ido bien se les abrirá sus Dashboard de Chainlink Operator
 
-imagen
+![Graph](./img/operator.png) 
 
 ### Bridge entre Nodo Chainlink y External Adapter
 
 Ahora iremos a la sección de `Bridges` y le daremos a `New Bridge`. Añadiremos el nombre que queramos y en `Bridge URL*` pondremos la dirección que nos aportó Digital Ocean (https://seashell-app-29fx9.ondigitalocean.app/), el resto lo dejamos igual.
 
-imagen
+![Graph](./img/bridge.png) 
+![Graph](./img/bridge1.png) 
 
 ### Jobs 
 
