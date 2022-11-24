@@ -4,6 +4,9 @@ Esta repo es una guia del tutorial de Chainlink sobre `External Adapters` para l
 
 En este caso veremos como un vuelo con 300 pasajeros deja una mancha en el ozono. Verificaremos por oráculos de Chainlink y escribiremos en la Blockchain cuanto ha sido su consumo llamando a la Api, siendo estos datos de unas carateristicas inmutables ` por naturaleza de la BLock`, pudiendo verificar siempre su estado inaltereable y con él, los cambios de emisiones de `CO2` por vuelo. 
 
+## Arquitectura
+
+![alt Dibujo de arquitectura mostrando la interacción dentro del sistema](./img/ea-arquitectura.jpg "Diagrama de Arquitectura")
 ### Hipotético casos de uso
 
 Las regulaciones han puesto pie en el asunto. A partir del próximo mes los gastos de CO2 serán gestionados por Smart contract en la Blockchain, las compañias depositarán unos Fondos de Garantias para cubrir legislación. Dependiendo de la emisión final podremos optar a:
@@ -37,7 +40,7 @@ Primero clonaremos este repositorio y cambiar `ExternalAdapterProject` abajo al 
 git clone https://github.com/thodges-gh/CL-EA-NodeJS-Template.git ExternalAdapterProject
 ```
 
-Imagen
+![Graph](./img/template.jpg)
 
 Entra al nuevo directorio creado
 
@@ -59,28 +62,38 @@ Instalar dependencias:
 yarn
 ```
 
-imagen
+![Graph](./img/yarn.jpg)
 
 ### Run
 
-Correr la aplicación de manera local (por defecto en el peurto 8080)
+Correr la aplicación de manera local (por defecto en el puerto 8080)
 
 ```bash
 yarn start
 ```
 
 **NOTA: Una vez se ejecute el nodo, no cerrar TERMINAL, abrir una nueva para continuar pruebas**
-Imagen
 
+![Graph](./img/start.jpg)
+
+---
 ## Climatiq
 
-Una vez registrado necesitaremos guardar en `.env.example` los `API_KEY` y `API_POINT`. Iremos a `API Keys` y crearemos una con el nombre que queramos, esta api la pegaremos en el archivo `.env.example`.
+Una vez registrado en [Climatiq](https://www.climatiq.io/) necesitaremos guardar en `.env.example` los `API_KEY` y `API_POINT`. Iremos a `API Keys` y crearemos una con el nombre que queramos, esta api la pegaremos en el archivo `.env.example`.
 
-imagen
+![Graph](./img/apikeys.jpg)
+
 
 El `API_POINT` Calcula las emisiones totales estimadas producidas por los vuelos de pasajeros entre los aeropuertos especificados. Lo obtendremos de los [documentos](https://www.climatiq.io/docs#travel-flightsx)
 
-imagen
+![Graph](./img/travel.jpg)
+
+
+Quedando el archivo `.env.example` de la siguiente forma
+
+![Graph](./img/travel.jpg)
+
+---
 
 ## DigitalOcean
 
@@ -207,8 +220,28 @@ Esto nos dará si todo ha ido bien una ID y el `External Job ID` que nos hará f
 
 imagen
 
+## Remix Co2Consumer.sol
+
+Ahora pasaremos a copiar [Co2Consumer.sol](contracts/Co2Consumer.sol) y hacer el `compile` y `deploy` en [Remix](https://remix.ethereum.org/)
+
+Primero haremos el `compile`, fijarse dejar la versión en la adecuada, en este caso `0.8.7`.
+Tambien deberemos sustituir en el contrato los siguientes valores antes del `deploy`
+
+* [Dirección de Contrato token Link](https://mumbai.polygonscan.com/address/0x326c977e6efc84e512bb9c30f76e30c160ed06fb)
+* [Contract Address de Oracle](https://mumbai.polygonscan.com/address/0x653b209dbd78b48e1df946e138352dc81e0ec45d#writeContract)
+imagen
+* [External Key del Job ID sin guiones Operator](https://cdrl6mbafsvkuk9gp1ug.eu-west1.naas.linkpool.io/signin)
 
 
+imagen
+
+* [HASH](https://mumbai.polygonscan.com/tx/0xb33a86a81ccbd1a3c882d97a61fb1d90035f5a744978e9a4fa99bc0eff392ecd)
+
+Ahora le pasaremos Link a este Smart para que pueda ejecutarse y usaremos REMIX para escribir directamente, ya que verificar el contrato lleva mas trabajo. Iremos a `requestCO2emission` y añadiremos los datos iniciales, revise foto.
+
+imagen
+
+* [HASH](https://mumbai.polygonscan.com/tx/0x041dd4f31e65ef55e45919b6a9616c2c76b10604d90eeff316d9782b984e8a60)
 
 
 
@@ -241,7 +274,5 @@ curl -X POST -H "content-type:application/json" "https://orca-app-wt4ks.ondigita
 ```
 
 
-## Arquitectura
 
-![alt Dibujo de arquitectura mostrando la interacción dentro del sistema](./img/ea-arquitectura.jpg "Diagrama de Arquitectura")
 
