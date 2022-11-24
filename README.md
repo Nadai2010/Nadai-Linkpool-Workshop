@@ -128,7 +128,7 @@ Ahora tendremos que darle al enlace de ir `https://seashell-app-29fx9.ondigitalo
 ![Graph](./img/link.png)    ![Graph](./img/error.png) 
 
 No se preocupe por el error, solo nos hace falta `https://seashell-app-29fx9.ondigitalocean.app/`
-para modificar el código que vamos a usar en la terminal y sustituir el `API_ENDPOINT`. Icialmente usariamos el primero y ya con el `API_ENDPOINT` el segundo.
+para modificar el código que vamos a usar en la terminal y sustituir el `API_ENDPOINT`. Inicialmente usariamos el primero en la terminal con el nodo abierto, y ya con el `API_ENDPOINT` el segundo.
 
 ```bash
 curl -X POST -H "content-type:application/json" "API_ENDPOINT" --data '{"id": 1, "data": {"from": "ONT", "to": "SCL","passengers": 300,"classFlight": "unknown" } }'
